@@ -12,10 +12,26 @@ class Tendril
    */
   public Tendril(int len, double theta, int x, int y)
   {
-    //your code here
+    myNumSegments = len;
+    myAngle = theta;
+    myX = x;
+    myY = y;
   }
   public void show()
   {
-    //your code here
+    int startX = myX;
+    int startY = myY;
+    for(int i = 0; i < myNumSegments; i++){
+      myAngle += (Math.random() * 0.4) - 0.2;
+      int endX = startX + (int)(Math.cos(myAngle) * SEG_LENGTH);
+      int endY = startY + (int)(Math.sin(myAngle) * SEG_LENGTH);
+      line(startX, startY, endX, endY);
+      startX = endX;
+      startY = endY;
+    }
+    if(myNumSegments >= SEG_LENGTH){
+      
+      Cluster two = new Cluster(myNumSegments/4, startX, startY);
+    }
   }
 }
